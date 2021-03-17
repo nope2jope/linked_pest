@@ -1,2 +1,2 @@
 # linked_pest
-automated job applier 
+robot applies for the job, hm
