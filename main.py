@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import time
 import os
 
 
@@ -33,4 +34,13 @@ spot_bar.send_keys(job_spot)
 
 spot_bar.send_keys(Keys.ENTER)
 
-driver.close()
+# run code and click back
+
+# from here i need to isolate the ul and accordingly each li
+# such that i can iterate through them and fill out predictable fields
+# first i should attempt isolating one element -- my mistake might've been
+# being too ambitious in attempting the ul from the get
+
+time.sleep(15)
+
+driver.quit()
