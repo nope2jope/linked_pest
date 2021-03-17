@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import os
 
+
 DRIVER_PATH = os.environ['ENV_DRIVER_PATH']
 
 driver = webdriver.Chrome(executable_path=DRIVER_PATH)
@@ -22,7 +23,14 @@ pw_field = driver.find_element_by_xpath('//*[@id="password"]')
 pw_field.send_keys(USER_PW)
 pw_field.send_keys(Keys.ENTER)
 
+job_bar = driver.find_element_by_xpath('//*[@id="jobs-search-box-keyword-id-ember37"]')
+job_title = 'developer'
+job_bar.send_keys(job_title)
+
+spot_bar = driver.find_element_by_xpath('//*[@id="jobs-search-box-location-id-ember37"]')
+job_spot = 'philadelphia'
+spot_bar.send_keys(job_spot)
+
+spot_bar.send_keys(Keys.ENTER)
+
 driver.close()
-
-
-
