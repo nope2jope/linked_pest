@@ -24,6 +24,8 @@ pw_field = driver.find_element_by_xpath('//*[@id="password"]')
 pw_field.send_keys(USER_PW)
 pw_field.send_keys(Keys.ENTER)
 
+time.sleep(5)
+
 job_bar = driver.find_element_by_xpath('//*[@id="jobs-search-box-keyword-id-ember37"]')
 job_title = 'developer'
 job_bar.send_keys(job_title)
@@ -34,13 +36,13 @@ spot_bar.send_keys(job_spot)
 
 spot_bar.send_keys(Keys.ENTER)
 
-# run code and click back
+time.sleep(5)
 
-# from here i need to isolate the ul and accordingly each li
-# such that i can iterate through them and fill out predictable fields
-# first i should attempt isolating one element -- my mistake might've been
-# being too ambitious in attempting the ul from the get
+job_listings = driver.find_elements_by_css_selector('.job-card-container--clickable')
+time.sleep(5)
 
-time.sleep(15)
+for job in job_listings:
+    time.sleep(5)
+    job.click()
 
-driver.quit()
+driver.close()
