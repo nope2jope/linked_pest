@@ -14,8 +14,10 @@ LINKED_URL = 'https://www.linkedin.com/jobs/search/'
 
 driver.get(LINKED_URL)
 
-sign_in_button = driver.find_element_by_xpath('/html/body/nav/div/a[2]')
+sign_in_button = driver.find_element_by_link_text('Sign in')
 sign_in_button.click()
+
+time.sleep(2)
 
 user_field = driver.find_element_by_xpath('//*[@id="username"]')
 user_field.send_keys(USER_EMAIL)
@@ -24,14 +26,19 @@ pw_field = driver.find_element_by_xpath('//*[@id="password"]')
 pw_field.send_keys(USER_PW)
 pw_field.send_keys(Keys.ENTER)
 
-time.sleep(5)
+time.sleep(10)
 
-job_bar = driver.find_element_by_xpath('//*[@id="jobs-search-box-keyword-id-ember37"]')
+bars = driver.find_elements_by_xpath('//*[@role="combobox"]')
+job_bar = bars[0]
 job_title = 'developer'
+job_bar.click()
 job_bar.send_keys(job_title)
+# job_bar.send_keys(Keys.TAB)
 
-spot_bar = driver.find_element_by_xpath('//*[@id="jobs-search-box-location-id-ember37"]')
+spot_bar = bars[1]
+spot_bar.clear()
 job_spot = 'philadelphia'
+spot_bar.click()
 spot_bar.send_keys(job_spot)
 
 spot_bar.send_keys(Keys.ENTER)
@@ -45,4 +52,5 @@ for job in job_listings:
     time.sleep(5)
     job.click()
 
-driver.close()
+
+
